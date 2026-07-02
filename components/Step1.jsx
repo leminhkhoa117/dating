@@ -98,8 +98,8 @@ export default function Step1({ onYes, audioRef }) {
       </div>
 
       <p className="question-text">
-        liệu anh có thể hẹn em một buổi{' '}
-        <span>☕ cf cuối tuần này</span> được không?
+        Hong biết bộ trưởng có thể hẹn người đẹp một buổi{' '}
+        <span>☕ cuối tuần này</span> được hong nhỉ?
       </p>
 
       {/* Day selector */}
