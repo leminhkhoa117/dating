@@ -21,12 +21,20 @@ const NO_TEXTS = [
 ];
 
 const YES_SIZES = [
-  { fontSize: '1.05rem', padding: '15px 36px' },
-  { fontSize: '1.22rem', padding: '17px 42px' },
-  { fontSize: '1.42rem', padding: '20px 50px' },
-  { fontSize: '1.65rem', padding: '22px 58px' },
-  { fontSize: '1.9rem',  padding: '26px 66px' },
-  { fontSize: '2.4rem',  padding: '30px 80px' },
+  { fontSize: '1.1rem', padding: '15px 36px', width: 'auto' },
+  { fontSize: '1.5rem', padding: '18px 48px', width: 'auto' },
+  { fontSize: '2.0rem', padding: '22px 64px', width: 'auto' },
+  { fontSize: '2.6rem', padding: '26px 80px', width: 'auto' },
+  { fontSize: '3.3rem', padding: '32px 96px', width: 'auto' },
+  { fontSize: '4.0rem', padding: '40px 20px', width: '100%' },
+];
+
+const NO_SIZES = [
+  { fontSize: '1rem', padding: '13px 28px' },
+  { fontSize: '0.85rem', padding: '11px 22px' },
+  { fontSize: '0.72rem', padding: '8px 16px' },
+  { fontSize: '0.6rem', padding: '6px 12px' },
+  { fontSize: '0.5rem', padding: '4px 8px' },
 ];
 
 const DAYS = ['Thứ 6', 'Thứ 7', 'Chủ nhật'];
@@ -60,6 +68,7 @@ export default function Step1({ onYes, audioRef }) {
   };
 
   const yesSize = YES_SIZES[Math.min(noCount, YES_SIZES.length - 1)];
+  const noSize  = NO_SIZES[Math.min(noCount, NO_SIZES.length - 1)];
   const noText  = NO_TEXTS[Math.min(noCount, NO_TEXTS.length - 1)];
   const isLast  = noCount >= NO_TEXTS.length - 1;
 
@@ -89,8 +98,8 @@ export default function Step1({ onYes, audioRef }) {
       </div>
 
       <p className="question-text">
-        Hong biết bộ trưởng có thể hẹn người đẹp một buổi{' '}
-        <span>☕ cuối tuần này</span> được hong nhỉ?
+        liệu anh có thể hẹn em một buổi{' '}
+        <span>☕ cf cuối tuần này</span> được không?
       </p>
 
       {/* Day selector */}
@@ -119,7 +128,8 @@ export default function Step1({ onYes, audioRef }) {
           style={{
             fontSize: yesSize.fontSize,
             padding: yesSize.padding,
-            transition: 'font-size 0.45s cubic-bezier(0.22,1,0.36,1), padding 0.45s cubic-bezier(0.22,1,0.36,1)',
+            width: yesSize.width,
+            transition: 'all 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
           Đồng ý 💜
@@ -129,6 +139,11 @@ export default function Step1({ onYes, audioRef }) {
           <button
             className={`btn-no ${isLast ? 'btn-no--warn' : ''}`}
             onClick={handleNo}
+            style={{
+              fontSize: noSize.fontSize,
+              padding: noSize.padding,
+              transition: 'all 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
           >
             {noText}
           </button>
